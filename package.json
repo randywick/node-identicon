@@ -1,22 +1,26 @@
 {
   "name": "identicon",
-  "description": "Identicon Generator for Node.js",
+  "description": "Identicon Generator for Node.js - forked to support SVG",
   "version": "2.0.1",
-  "author": "Ajido <dkuriyam@gmail.com>",
-  "main": "identicon",
+  "author": [
+    "Ajido <dkuriyam@gmail.com>",
+    "RW <randy.wick@gmail.com>"
+  ],
+  "main": "Identicon.js",
   "keywords": [
     "identicon",
     "canvas"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/Ajido/node-identicon.git"
+    "url": "git@github.com:randywick/node-identicon.git"
   },
   "scripts": {
     "test": "mocha -R spec --recursive"
   },
   "dependencies": {
-    "canvas": "^1.2.2"
+    "canvas": "^1.2.2",
+    "commander": "^2.9.0"
   },
   "devDependencies": {
     "mocha": "^2.2.4"
@@ -24,5 +28,8 @@
   "licenses": "MIT",
   "engines": {
     "node": ">= 0.10.0"
+  },
+  "bin": {
+    "identicon": "bin/gen.js"
   }
 }
