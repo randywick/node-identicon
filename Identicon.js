@@ -80,6 +80,7 @@ class Identicon {
     this._ctx = null;
 
     this._background = options.backColor || 'rgb(255,255,255)';
+    // this._background = options.backColor || 'rgb(0,0,0,0)';
 
     this._cornerTurn = 0;
     this._sideTurn = 0;
@@ -129,10 +130,7 @@ class Identicon {
   generate(message, callback) {
     this._message = message;
 
-    this._cornerTurn = (this._hashCode >> 8) & 3;
-    this._sideTurn = (this._hashCode >> 15) & 3;
-
-    this._clearCanvas()
+    this._init();
     this._render();
 
     if (callback == false) {
@@ -149,6 +147,16 @@ class Identicon {
         resolve(buf)
       })
     })
+  }
+
+
+  _init(overlay) {
+    this._cornerTurn = (this._hashCode >> 8) & 3;
+    this._sideTurn = (this._hashCode >> 15) & 3;
+
+    if (overlay !== true) {
+      this._clearCanvas();
+    }
   }
 
 
@@ -227,7 +235,6 @@ class Identicon {
     this._renderPatch(2, 0, 'corner'); // top-right
     this._renderPatch(2, 2, 'corner'); // bottom-right
     this._renderPatch(0, 2, 'corner'); // bottom-left
-
   }
 
 
